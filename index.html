@@ -3,7 +3,6 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-
 <title>ric <3 bibi</title>
 
 <style>
@@ -14,242 +13,77 @@ html, body {
     width: 100%;
     height: 100%;
     overflow: hidden;
+    background: #ffd6e7;
     font-family: Arial, Helvetica, sans-serif;
-    background: #ffc1dc;
-    color: #ffffff;
 }
 
-body {
-    background:
-        radial-gradient(circle at 10% 20%, #ffffff 0px, transparent 8px),
-        radial-gradient(circle at 90% 15%, #ffffff 0px, transparent 7px),
-        radial-gradient(circle at 20% 85%, #ffffff 0px, transparent 6px),
-        linear-gradient(135deg, #ffb6d5, #ffd6e8);
-}
-
-/* CORAÇÕES */
-.heart {
-    position: absolute;
-    color: #ff4f91;
-    font-size: 35px;
-    opacity: 0.75;
-}
-
-.h1 { top: 5%; left: 5%; }
-.h2 { top: 10%; right: 8%; font-size: 55px; }
-.h3 { top: 45%; left: 3%; font-size: 25px; }
-.h4 { top: 65%; right: 4%; font-size: 30px; }
-.h5 { bottom: 8%; left: 8%; font-size: 45px; }
-.h6 { bottom: 12%; right: 10%; font-size: 50px; }
-.h7 { top: 25%; left: 18%; font-size: 22px; }
-.h8 { top: 30%; right: 20%; font-size: 25px; }
-
-/* TÍTULO */
-#love {
-    position: absolute;
-    top: 8%;
+/* FUNDO */
+#background {
+    position: fixed;
+    top: 0;
+    left: 0;
     width: 100%;
-    text-align: center;
-    font-size: 45px;
-    font-weight: bold;
-    color: #ff3f87;
-    text-shadow: 2px 2px #ffffff;
+    height: 100%;
+    background-image: url("fundo.png");
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    z-index: 0;
 }
 
-/* CORAÇÃO CENTRAL */
-#heartBox {
+/* ÁREA DO TIMER */
+#timerArea {
     position: absolute;
-    width: 70vw;
-    height: 55vh;
-    left: 15vw;
-    top: 18vh;
-    background: rgba(255,255,255,0.30);
-    border-radius: 50%;
-    border: 5px solid rgba(255,255,255,0.65);
-    box-shadow: 0 0 30px rgba(255,80,150,0.35);
+    top: 22%;
+    left: 10%;
+    width: 80%;
+    text-align: center;
+    z-index: 2;
+}
+
+/* FRASE */
+#love {
+    font-size: 42px;
+    font-weight: bold;
+    color: #d93672;
+    text-shadow: 2px 2px white;
+    margin-bottom: 20px;
 }
 
 /* TIMER */
 #timer {
-    position: absolute;
-    width: 100%;
-    text-align: center;
-    top: 35%;
-    font-size: 16vw;
+    font-size: 18vw;
     font-weight: bold;
-    color: #e9367d;
+    color: #d93672;
     text-shadow:
-        3px 3px #ffffff,
-        -2px -2px #ffffff;
-}
-
-/* HELLO KITTY */
-#kittyLeft,
-#kittyRight {
-    position: absolute;
-    bottom: 17%;
-    width: 170px;
-    height: 170px;
-    background: #ffffff;
-    border-radius: 48% 48% 45% 45%;
-    border: 5px solid #e83c7c;
-    box-shadow: 0 5px 15px rgba(180,40,100,0.25);
-}
-
-/* orelhas */
-#kittyLeft:before,
-#kittyRight:before {
-    content: "";
-    position: absolute;
-    width: 55px;
-    height: 55px;
-    background: #ffffff;
-    border: 5px solid #e83c7c;
-    top: -25px;
-    left: 10px;
-    transform: rotate(35deg);
-}
-
-#kittyLeft:after,
-#kittyRight:after {
-    content: "";
-    position: absolute;
-    width: 55px;
-    height: 55px;
-    background: #ffffff;
-    border: 5px solid #e83c7c;
-    top: -25px;
-    right: 10px;
-    transform: rotate(-35deg);
-}
-
-/* olhos */
-.kittyEye {
-    position: absolute;
-    width: 12px;
-    height: 18px;
-    background: #222222;
-    border-radius: 50%;
-    top: 65px;
-}
-
-.eye1 {
-    left: 42px;
-}
-
-.eye2 {
-    right: 42px;
-}
-
-/* nariz */
-.kittyNose {
-    position: absolute;
-    width: 15px;
-    height: 12px;
-    background: #ffd34d;
-    border-radius: 50%;
-    left: 78px;
-    top: 90px;
-}
-
-/* bigode */
-.whisker {
-    position: absolute;
-    width: 40px;
-    height: 2px;
-    background: #333333;
-}
-
-.w1 {
-    left: -20px;
-    top: 92px;
-    transform: rotate(10deg);
-}
-
-.w2 {
-    left: -20px;
-    top: 105px;
-    transform: rotate(-10deg);
-}
-
-.w3 {
-    right: -20px;
-    top: 92px;
-    transform: rotate(-10deg);
-}
-
-.w4 {
-    right: -20px;
-    top: 105px;
-    transform: rotate(10deg);
-}
-
-/* laço */
-.bow {
-    position: absolute;
-    width: 45px;
-    height: 35px;
-    background: #ff4f91;
-    border: 3px solid #e52f72;
-    border-radius: 50%;
-    top: 0;
-}
-
-.bowLeft {
-    left: 25px;
-    transform: rotate(-20deg);
-}
-
-.bowRight {
-    left: 62px;
-    transform: rotate(20deg);
-}
-
-.bowCenter {
-    position: absolute;
-    width: 18px;
-    height: 18px;
-    background: #ff77aa;
-    border: 3px solid #e52f72;
-    border-radius: 50%;
-    left: 54px;
-    top: 8px;
-    z-index: 2;
-}
-
-/* posições das Kitty */
-#kittyLeft {
-    left: 5%;
-}
-
-#kittyRight {
-    right: 5%;
+        3px 3px white,
+        -2px -2px white;
 }
 
 /* BOTÕES */
 #controls {
     position: absolute;
-    bottom: 3%;
+    bottom: 25px;
     left: 0;
     width: 100%;
     text-align: center;
+    z-index: 5;
 }
 
-.btn {
-    background: rgba(255,255,255,0.75);
-    color: #e9367d;
-    border: 3px solid #ff72a9;
-    border-radius: 18px;
-    font-size: 15px;
-    font-weight: bold;
-    padding: 9px 13px;
+button {
+    background: rgba(255,255,255,0.88);
+    color: #d93672;
+    border: 2px solid #f06b9b;
+    border-radius: 15px;
+    padding: 10px 13px;
     margin: 3px;
-    box-shadow: 0 3px 8px rgba(200,50,110,0.2);
+    font-size: 14px;
+    font-weight: bold;
 }
 
-.btn:active {
-    background: #ff8fba;
-    color: #ffffff;
+button:active {
+    background: #f58bb2;
+    color: white;
 }
 
 /* MODO TELA CHEIA */
@@ -257,25 +91,16 @@ body {
     display: none;
 }
 
-.fullscreen #love {
-    top: 10%;
-}
-
-.fullscreen #heartBox {
-    width: 90vw;
-    height: 75vh;
-    left: 5vw;
-    top: 12vh;
+.fullscreen #timerArea {
+    top: 32%;
 }
 
 .fullscreen #timer {
-    top: 37%;
-    font-size: 22vw;
+    font-size: 25vw;
 }
 
-.fullscreen #kittyLeft,
-.fullscreen #kittyRight {
-    display: none;
+.fullscreen #love {
+    font-size: 50px;
 }
 
 #exitFull {
@@ -287,76 +112,33 @@ body {
     position: absolute;
     top: 10px;
     right: 10px;
-    background: transparent;
-    border: 0;
-    color: #e9367d;
-    font-size: 25px;
+    z-index: 10;
+    background: rgba(255,255,255,0.7);
+    border: none;
+    color: #d93672;
+    font-size: 22px;
 }
 
-/* CELULAR / IPAD PEQUENO */
+/* IPAD PEQUENO */
 @media screen and (max-width: 700px) {
+
+    #timerArea {
+        top: 25%;
+    }
 
     #love {
         font-size: 30px;
-        top: 7%;
-    }
-
-    #heartBox {
-        width: 88vw;
-        left: 6vw;
-        height: 55vh;
     }
 
     #timer {
-        font-size: 20vw;
-        top: 38%;
+        font-size: 22vw;
     }
 
-    #kittyLeft,
-    #kittyRight {
-        width: 95px;
-        height: 95px;
-        bottom: 18%;
-    }
-
-    #kittyLeft {
-        left: 2%;
-    }
-
-    #kittyRight {
-        right: 2%;
-    }
-
-    .kittyEye {
-        width: 7px;
-        height: 12px;
-        top: 37px;
-    }
-
-    .eye1 {
-        left: 23px;
-    }
-
-    .eye2 {
-        right: 23px;
-    }
-
-    .kittyNose {
-        width: 9px;
-        height: 7px;
-        left: 43px;
-        top: 51px;
-    }
-
-    #controls {
-        bottom: 2%;
-    }
-
-    .btn {
+    button {
         font-size: 11px;
-        padding: 6px 7px;
-        margin: 1px;
+        padding: 7px 8px;
     }
+
 }
 
 </style>
@@ -364,21 +146,13 @@ body {
 
 <body>
 
-<!-- CORAÇÕES -->
-<div class="heart h1">♥</div>
-<div class="heart h2">♥</div>
-<div class="heart h3">♥</div>
-<div class="heart h4">♥</div>
-<div class="heart h5">♥</div>
-<div class="heart h6">♥</div>
-<div class="heart h7">♥</div>
-<div class="heart h8">♥</div>
+<div id="background"></div>
 
-<div id="love">
-    ric &lt;3 bibi
-</div>
+<div id="timerArea">
 
-<div id="heartBox">
+    <div id="love">
+        ric &lt;3 bibi
+    </div>
 
     <div id="timer">
         00:00
@@ -386,63 +160,26 @@ body {
 
 </div>
 
-<!-- KITTY ESQUERDA -->
-<div id="kittyLeft">
-
-    <div class="bow bowLeft"></div>
-    <div class="bow bowRight"></div>
-    <div class="bowCenter"></div>
-
-    <div class="kittyEye eye1"></div>
-    <div class="kittyEye eye2"></div>
-    <div class="kittyNose"></div>
-
-    <div class="whisker w1"></div>
-    <div class="whisker w2"></div>
-    <div class="whisker w3"></div>
-    <div class="whisker w4"></div>
-
-</div>
-
-<!-- KITTY DIREITA -->
-<div id="kittyRight">
-
-    <div class="bow bowLeft"></div>
-    <div class="bow bowRight"></div>
-    <div class="bowCenter"></div>
-
-    <div class="kittyEye eye1"></div>
-    <div class="kittyEye eye2"></div>
-    <div class="kittyNose"></div>
-
-    <div class="whisker w1"></div>
-    <div class="whisker w2"></div>
-    <div class="whisker w3"></div>
-    <div class="whisker w4"></div>
-
-</div>
-
-<!-- BOTÕES -->
 <div id="controls">
 
-    <button class="btn" onclick="startTimer();">
+    <button onclick="startTimer();">
         ♥ INICIAR
     </button>
 
-    <button class="btn" onclick="pauseTimer();">
+    <button onclick="pauseTimer();">
         ♡ PAUSAR
     </button>
 
-    <button class="btn" onclick="resumeTimer();">
-        ♥ CONTINUAR
+    <button onclick="resumeTimer();">
+        ♥ RETOMAR
     </button>
 
-    <button class="btn" onclick="restartTimer();">
-        ↻ REINICIAR
+    <button onclick="restartTimer();">
+        ↻ RESTART
     </button>
 
-    <button class="btn" onclick="fullScreen();">
-        ⛶ TELA CHEIA
+    <button onclick="fullScreen();">
+        ⛶ TELA INTEIRA
     </button>
 
 </div>
@@ -520,7 +257,6 @@ function resumeTimer() {
 function restartTimer() {
 
     if (timerID != null) {
-
         window.clearInterval(timerID);
     }
 
