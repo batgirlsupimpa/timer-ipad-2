@@ -2,286 +2,165 @@
 <html>
 <head>
 <meta charset="utf-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>ric <3 bibi</title>
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>ric &lt;3 bibi</title>
 
 <style>
-
-html, body {
-    margin: 0;
-    padding: 0;
-    width: 100%;
-    height: 100%;
-    overflow: hidden;
-    background: #ffd6e7;
-    font-family: Arial, Helvetica, sans-serif;
+html,body{
+margin:0;
+padding:0;
+width:100%;
+height:100%;
+overflow:hidden;
+background:#ffc7df;
+font-family:Arial;
 }
 
-/* FUNDO */
-#background {
-    position: fixed;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    background-image: url("fundo.png");
-    background-size: cover;
-    background-position: center;
-    background-repeat: no-repeat;
-    z-index: 0;
+#bg{
+position:absolute;
+top:0;
+left:0;
+width:100%;
+height:100%;
+z-index:0;
 }
 
-/* ÁREA DO TIMER */
-#timerArea {
-    position: absolute;
-    top: 22%;
-    left: 10%;
-    width: 80%;
-    text-align: center;
-    z-index: 2;
+#timer{
+position:absolute;
+top:34%;
+left:0;
+width:100%;
+text-align:center;
+font-size:18vw;
+font-weight:bold;
+color:#e63e7d;
+text-shadow:3px 3px #fff;
+z-index:3;
 }
 
-/* FRASE */
-#love {
-    font-size: 42px;
-    font-weight: bold;
-    color: #d93672;
-    text-shadow: 2px 2px white;
-    margin-bottom: 20px;
+#controls{
+position:absolute;
+bottom:15px;
+left:0;
+width:100%;
+text-align:center;
+z-index:5;
 }
 
-/* TIMER */
-#timer {
-    font-size: 18vw;
-    font-weight: bold;
-    color: #d93672;
-    text-shadow:
-        3px 3px white,
-        -2px -2px white;
+button{
+font-size:13px;
+padding:8px;
+margin:2px;
+border:2px solid #ed6c9c;
+border-radius:10px;
+background:#fff;
+color:#d93672;
+font-weight:bold;
 }
 
-/* BOTÕES */
-#controls {
-    position: absolute;
-    bottom: 25px;
-    left: 0;
-    width: 100%;
-    text-align: center;
-    z-index: 5;
+#exit{
+display:none;
+position:absolute;
+top:5px;
+right:5px;
+z-index:10;
 }
 
-button {
-    background: rgba(255,255,255,0.88);
-    color: #d93672;
-    border: 2px solid #f06b9b;
-    border-radius: 15px;
-    padding: 10px 13px;
-    margin: 3px;
-    font-size: 14px;
-    font-weight: bold;
+.full #controls{
+display:none;
 }
 
-button:active {
-    background: #f58bb2;
-    color: white;
+.full #timer{
+top:38%;
+font-size:23vw;
 }
 
-/* MODO TELA CHEIA */
-.fullscreen #controls {
-    display: none;
+.full #exit{
+display:block;
 }
-
-.fullscreen #timerArea {
-    top: 32%;
-}
-
-.fullscreen #timer {
-    font-size: 25vw;
-}
-
-.fullscreen #love {
-    font-size: 50px;
-}
-
-#exitFull {
-    display: none;
-}
-
-.fullscreen #exitFull {
-    display: block;
-    position: absolute;
-    top: 10px;
-    right: 10px;
-    z-index: 10;
-    background: rgba(255,255,255,0.7);
-    border: none;
-    color: #d93672;
-    font-size: 22px;
-}
-
-/* IPAD PEQUENO */
-@media screen and (max-width: 700px) {
-
-    #timerArea {
-        top: 25%;
-    }
-
-    #love {
-        font-size: 30px;
-    }
-
-    #timer {
-        font-size: 22vw;
-    }
-
-    button {
-        font-size: 11px;
-        padding: 7px 8px;
-    }
-
-}
-
 </style>
 </head>
 
 <body>
 
-<div id="background"></div>
+<img id="bg" src="fundo.png">
 
-<div id="timerArea">
-
-    <div id="love">
-        ric &lt;3 bibi
-    </div>
-
-    <div id="timer">
-        00:00
-    </div>
-
-</div>
+<div id="timer">00:00</div>
 
 <div id="controls">
-
-    <button onclick="startTimer();">
-        ♥ INICIAR
-    </button>
-
-    <button onclick="pauseTimer();">
-        ♡ PAUSAR
-    </button>
-
-    <button onclick="resumeTimer();">
-        ♥ RETOMAR
-    </button>
-
-    <button onclick="restartTimer();">
-        ↻ RESTART
-    </button>
-
-    <button onclick="fullScreen();">
-        ⛶ TELA INTEIRA
-    </button>
-
+<button onclick="startTimer()">♥ INICIAR</button>
+<button onclick="pauseTimer()">♡ PAUSAR</button>
+<button onclick="resumeTimer()">♥ RETOMAR</button>
+<button onclick="restartTimer()">↻ RESTART</button>
+<button onclick="fullScreen()">⛶</button>
 </div>
 
-<button id="exitFull" onclick="fullScreen();">
-    ⛶
-</button>
+<button id="exit" onclick="fullScreen()">⛶</button>
 
 <script>
 
-var seconds = 0;
-var timerRunning = false;
-var timerID = null;
+var seconds=0;
+var running=false;
+var timerID=null;
 
-function showTime() {
+function draw(){
+var m=Math.floor(seconds/60);
+var s=seconds%60;
 
-    var minutes = Math.floor(seconds / 60);
-    var secs = seconds % 60;
+if(m<10){m="0"+m;}
+if(s<10){s="0"+s;}
 
-    if (minutes < 10) {
-        minutes = "0" + minutes;
-    }
-
-    if (secs < 10) {
-        secs = "0" + secs;
-    }
-
-    document.getElementById("timer").innerHTML =
-        minutes + ":" + secs;
+document.getElementById("timer").innerHTML=m+":"+s;
 }
 
-function count() {
-
-    seconds = seconds + 1;
-
-    showTime();
+function tick(){
+seconds=seconds+1;
+draw();
 }
 
-function startTimer() {
-
-    if (timerRunning == false) {
-
-        seconds = 0;
-
-        showTime();
-
-        timerID = window.setInterval(count, 1000);
-
-        timerRunning = true;
-    }
+function startTimer(){
+if(running==false){
+seconds=0;
+draw();
+timerID=setInterval(tick,1000);
+running=true;
+}
 }
 
-function pauseTimer() {
-
-    if (timerRunning == true) {
-
-        window.clearInterval(timerID);
-
-        timerID = null;
-
-        timerRunning = false;
-    }
+function pauseTimer(){
+if(running==true){
+clearInterval(timerID);
+timerID=null;
+running=false;
+}
 }
 
-function resumeTimer() {
-
-    if (timerRunning == false) {
-
-        timerID = window.setInterval(count, 1000);
-
-        timerRunning = true;
-    }
+function resumeTimer(){
+if(running==false){
+timerID=setInterval(tick,1000);
+running=true;
+}
 }
 
-function restartTimer() {
-
-    if (timerID != null) {
-        window.clearInterval(timerID);
-    }
-
-    timerID = null;
-
-    timerRunning = false;
-
-    seconds = 0;
-
-    showTime();
+function restartTimer(){
+if(timerID!=null){
+clearInterval(timerID);
+}
+timerID=null;
+running=false;
+seconds=0;
+draw();
 }
 
-function fullScreen() {
-
-    if (document.body.className == "fullscreen") {
-
-        document.body.className = "";
-
-    } else {
-
-        document.body.className = "fullscreen";
-    }
+function fullScreen(){
+if(document.body.className=="full"){
+document.body.className="";
+}else{
+document.body.className="full";
+}
 }
 
-showTime();
+draw();
 
 </script>
 
